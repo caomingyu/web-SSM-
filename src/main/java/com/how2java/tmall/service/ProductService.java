@@ -11,4 +11,8 @@ public interface ProductService {
     void update(Product product);
 
     List<Product> list(int pid);
+
+    Product get(int pid);
+
+    void setFirstProductImage(Product product);
 }

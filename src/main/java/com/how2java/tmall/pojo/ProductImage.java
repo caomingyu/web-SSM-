@@ -5,6 +5,8 @@ public class ProductImage {
 
     private Integer pid;
 
+    private Product product;
+
     private String type;
 
     public Integer getId() {
