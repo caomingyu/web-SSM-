@@ -64,6 +64,7 @@ public class OrderItemServiceImpl implements OrderItemService {
         for (OrderItem oi:ois
              ) {
             Product p = productService.get(oi.getPid());
+            productService.setFirstProductImage(p);
             oi.setProduct(p);
         }
         float total = 0;

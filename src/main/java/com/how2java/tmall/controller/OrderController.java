@@ -31,14 +31,14 @@ public class OrderController {
         PageHelper.offsetPage(page.getStart(), page.getCount());
         List<Order> os = orderService.list();
         orderItemService.fill(os);
-        for (Order o:os
-             ) {
-            for (OrderItem oi:o.getOrderItems()
-                 ) {
-                Product p = oi.getProduct();
-                productService.setFirstProductImage(p);
-            }
-        }
+//        for (Order o:os
+//             ) {
+//            for (OrderItem oi:o.getOrderItems()
+//                 ) {
+//                Product p = oi.getProduct();
+//                productService.setFirstProductImage(p);
+//            }
+//        }
         int total = (int)new PageInfo<>(os).getTotal();
         page.setTotal(total);
         model.addAttribute("os", os);

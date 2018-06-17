@@ -1,12 +1,31 @@
 package com.how2java.tmall.pojo;
 
+import java.util.List;
+
 public class Category {
     private Integer id;
 
     private String name;
-
+    private List<Product> products;
+    private List<List<Product>> productsByRow;
     public Integer getId() {
         return id;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public List<List<Product>> getProductsByRow() {
+        return productsByRow;
+    }
+
+    public void setProductsByRow(List<List<Product>> productsByRow) {
+        this.productsByRow = productsByRow;
     }
 
     public void setId(Integer id) {

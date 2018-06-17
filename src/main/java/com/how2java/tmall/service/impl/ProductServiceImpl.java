@@ -1,14 +1,13 @@
 package com.how2java.tmall.service.impl;
 
 import com.how2java.tmall.mapper.ProductMapper;
-import com.how2java.tmall.pojo.Product;
-import com.how2java.tmall.pojo.ProductExample;
-import com.how2java.tmall.pojo.ProductImage;
+import com.how2java.tmall.pojo.*;
 import com.how2java.tmall.service.ProductImageService;
 import com.how2java.tmall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -53,6 +52,38 @@ public class ProductServiceImpl implements ProductService {
         if (!pis.isEmpty()) {
             ProductImage pi = pis.get(0);
             product.setFirstProductImage(pi);
+        }
+    }
+
+    @Override
+    public void fill(Category c) {
+        List<Product> products = list(c.getId());
+        c.setProducts(products);
+
+    }
+
+    @Override
+    public void fill(List<Category> cs) {
+        for (Category c : cs
+                ) {
+            fill(c);
+        }
+    }
+
+    @Override
+    public void fillByRow(List<Category> cs) {
+        int productNumberEachRow = 8;
+        for (Category c : cs
+                ) {
+            List<Product> products = c.getProducts();
+            List<List<Product>> productsByRow = new ArrayList<>();
+            for (int i = 0; i < products.size(); i += productNumberEachRow) {
+                int size = i + productNumberEachRow;
+                size = size > products.size() ? products.size() : size;
+                List<Product> ps = products.subList(i, size);
+                productsByRow.add(ps);
+            }
+            c.setProductsByRow(productsByRow);
         }
     }
 }
