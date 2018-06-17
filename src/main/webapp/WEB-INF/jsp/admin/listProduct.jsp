@@ -24,6 +24,10 @@
     <title>list</title>
 </head>
 <body>
+<ol class="breadcrumb">
+    <li><a href="/admin_category_list">全部分类</a></li>
+    <li class="active">${c.name}</li>
+</ol>
 <div>
     <table class="table">
         <thead>

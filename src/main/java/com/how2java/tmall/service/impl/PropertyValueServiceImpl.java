@@ -46,7 +46,7 @@ public class PropertyValueServiceImpl implements PropertyValueService {
 
     @Override
     public void init(Product p) {
-        List<Property> ps =propertyService.list(p.getId());
+        List<Property> ps =propertyService.list(p.getCid());
         for (Property pt:ps
              ) {
             PropertyValue pv = get(p.getId(), pt.getId());
